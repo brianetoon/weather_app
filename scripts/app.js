@@ -5,11 +5,8 @@ const updateCity = async (city) => {
     const cityDets = await getCity(city);
     const weather = await getWeather(cityDets.Key);
 
-    return {
-        cityDets: cityDets,
-        weather: weather
-    };
-
+    // object shorthand notation
+    return { cityDets, weather };
 };
 
 cityForm.addEventListener('submit', e => {
@@ -25,4 +22,3 @@ cityForm.addEventListener('submit', e => {
         .then(data => console.log(data))
         .catch(err => console.log(err));
 });
-
