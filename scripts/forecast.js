@@ -25,10 +25,12 @@ const getCity = async (city) => {
     return data[0];
 };
 
-getCity('ann arbor').then(data => {
-    return getWeather(data.Key);
-}).then(data => console.log(data))
-.catch(err => console.log(err));
+
+// getCity('ann arbor').then(data => {
+//     return getWeather(data.Key);
+// }).then(data => {
+//     console.log(data);
+// }).catch(err => console.log(err));
 
 // getWeather('329380')
 //     .then(data => console.log(data))
