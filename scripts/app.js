@@ -4,9 +4,13 @@ const details = document.querySelector('.details');
 
 const updateUI = (data) =>{
 
-    const cityDets = data.cityDets;
-    const weather = data.weather;
+    // const cityDets = data.cityDets;
+    // const weather = data.weather;
 
+    //destructure data properties - stores properties in const with same name
+    const { cityDets, weather } = data;
+
+    // update details template
     details.innerHTML = `
         <h5 class="my-3">${cityDets.EnglishName}</h5>
         <div class="my-3">${weather.WeatherText}</div>
