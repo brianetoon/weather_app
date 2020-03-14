@@ -4,5 +4,11 @@ body{
     letter-spacing: 0.2em;
 }
 .container{
-    max-width: 400px;
+    max-width: 380px;
+}
+.icon{
+    background: #fafbfd;
+    margin-top: -50px;
+    width: 100px;
+    border-radius: 50%;
 }

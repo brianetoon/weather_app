@@ -1,13 +1,14 @@
 const cityForm = document.querySelector('form');
 const card = document.querySelector('.card');
 const details = document.querySelector('.details');
+const time = document.querySelector('img.time');
+const icon = document.querySelector('.icon img');
 
 const updateUI = (data) =>{
 
-    // const cityDets = data.cityDets;
-    // const weather = data.weather;
+    // console.log(data);
 
-    //destructure data properties - stores properties in const with same name
+    //destructure data properties
     const { cityDets, weather } = data;
 
     // update details template
@@ -20,12 +21,26 @@ const updateUI = (data) =>{
         </div>
     `;
 
+    // update icon images
+    const iconSrc = `img/icons/${weather.WeatherIcon}.svg`;
+    icon.setAttribute('src', iconSrc);
+    
+    // update day and night images
+    let timeSrc = null;
+    if(weather.IsDayTime){
+        timeSrc = 'img/day.svg';
+    } else {
+        timeSrc = 'img/night.svg'
+    }
+    time.setAttribute('src', timeSrc);
+
     // remove d-none class if present
     if(card.classList.contains('d-none')){
         card.classList.remove('d-none');
     }
 };
 
+// calls getCity and getWeather to retrieve the weather data
 const updateCity = async (city) => {
 
     const cityDets = await getCity(city);
@@ -35,6 +50,8 @@ const updateCity = async (city) => {
     return { cityDets, weather };
 };
 
+
+// listens for form submissiion & calls update city
 cityForm.addEventListener('submit', e => {
     // prevent default action
     e.preventDefault();
