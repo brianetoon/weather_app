@@ -12,3 +12,6 @@ body{
     width: 100px;
     border-radius: 50%;
 }
+.error{
+    color: crimson;
+}

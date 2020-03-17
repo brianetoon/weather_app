@@ -3,10 +3,9 @@ const card = document.querySelector('.card');
 const details = document.querySelector('.details');
 const time = document.querySelector('img.time');
 const icon = document.querySelector('.icon img');
+const error = document.querySelector('.error')
 
 const updateUI = (data) =>{
-
-    // console.log(data);
 
     //destructure data properties
     const { cityDets, weather } = data;
@@ -24,7 +23,7 @@ const updateUI = (data) =>{
     // update icon images
     const iconSrc = `img/icons/${weather.WeatherIcon}.svg`;
     icon.setAttribute('src', iconSrc);
-    
+
     // update day and night images
     let timeSrc = null;
     if(weather.IsDayTime){
@@ -62,6 +61,14 @@ cityForm.addEventListener('submit', e => {
 
     // call update city and update the ui
     updateCity(city)
-        .then(data => updateUI(data))
-        .catch(err => console.log(err));
+        .then(data => {
+            error.classList.add('d-none');
+            updateUI(data);
+        })
+        .catch(err => {
+            if(err){
+                error.classList.remove('d-none');
+                card.classList.add('d-none');
+            }
+        });
 });
